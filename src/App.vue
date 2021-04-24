@@ -1,26 +1,37 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="container">
+    <Clock />
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Clock from './components/Clock.vue'
 
 export default {
-  name: 'App',
+  name: 'Time',
   components: {
-    HelloWorld
+    Clock
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.container {
+  /* 全屏显示 */
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+
+  /* flexbox 居中对齐 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #212121;
+  color: #fafafa;
+
+  overflow: hidden;
 }
 </style>
