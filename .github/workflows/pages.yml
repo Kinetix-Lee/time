@@ -1,0 +1,49 @@
+name: Github Pages
+
+on:
+  push:
+    branches:
+      - master
+
+env:
+  TZ: Asia/Shanghai
+
+jobs:
+  deploy:
+    name: Build & Deploy Github Pages
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Setup node
+      uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+
+    - name: Cache node modules
+      uses: actions/cache@v1
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+
+    - name: Install dependencies
+      run: |
+        npm i -g yarn
+        yarn
+
+    - name: Build
+      run: |
+        yarn build
+
+    - name: Deploy
+      env:
+        GITHU_REPO: github.com/Kinetix-Lee/time.git
+      run: |
+        cd ./dist && git init && git add .
+        git config user.name 'Kinetix-Lee'
+        git config user.email 'i@x86.app'
+        git add .
+        git commit -m 'Github Actions $(date +'%Y-%m-%d %H:%M:%S')'
+        git push --force --quiet "https://${{ secrets.ACCESS_TOKEN }}@$GITHUB_REPO" master:gh-pages 
