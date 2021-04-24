@@ -38,6 +38,7 @@ jobs:
         cd ./dist && git init && git add .
         git config user.name 'Kinetix-Lee'
         git config user.email 'i@x86.app'
+        git config --global init.defaultBranch 'master'
         git add .
         git commit -m 'Github Actions $(date +'%Y-%m-%d %H:%M:%S')'
         git push --force --quiet "https://${{ secrets.ACCESS_TOKEN }}@$GITHUB_REPO" master:gh-pages 
