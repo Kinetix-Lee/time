@@ -32,16 +32,13 @@ jobs:
       run: |
         yarn build
 
-    - name: Initialise Git repository
-      run: |
-        git config --global user.name 'Kinetix-Lee'
-        git config --global user.email 'i@x86.app'
-        git config --global init.defaultBranch 'gh-pages'
-        cd ./dist && git init && git add .
-        git commit -m "CI Deployed $(date)"
-
-    - name: Deploy to GitHub Pages
+    - name: Deploy
       env:
         GITHUB_REPO: github.com/Kinetix-Lee/time.git
       run: |
-        git push --force "https://${{ secrets.ACCESS_TOKEN }}@$GITHUB_REPO" gh-pages:gh-pages 
+        git config --global user.name 'Kinetix-Lee'
+        git config --global user.email 'i@x86.app'
+        git config --global init.defaultBranch 'master'
+        cd ./dist && git init && git add .
+        git commit -m "CI Deployed $(date)"
+        git push --force "https://${{ secrets.ACCESS_TOKEN }}@$GITHUB_REPO" master:gh-pages 
