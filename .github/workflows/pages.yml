@@ -34,8 +34,8 @@ jobs:
 
     - name: Initialise Git repository
       run: |
-        git config user.name 'Kinetix-Lee'
-        git config user.email 'i@x86.app'
+        git config --global user.name 'Kinetix-Lee'
+        git config --global user.email 'i@x86.app'
         git config --global init.defaultBranch 'master'
         cd ./dist && git init && git add .
         git add .
