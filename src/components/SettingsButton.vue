@@ -13,8 +13,7 @@
   height: 2.5rem;
   align-items: center;
   justify-content: center;
-  border: 1px solid #fafafa;
-  border-radius: 0;
+  border: none;
   z-index: 10;
   color: #fafafa;
   background: #212121;
