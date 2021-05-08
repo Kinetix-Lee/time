@@ -1,5 +1,7 @@
 <template>
-  <div id="clock">{{ time }}</div>
+  <div id="clock" :style="{ display: $store.state.onClock ? 'block' : 'none' }">
+    {{ $store.state.time }}
+  </div>
 </template>
 <style>
 #clock {
@@ -12,16 +14,12 @@ export default {
   name: 'Clock',
   data() {
     return {
-      count: 0,
-      time: '',
-      timer: null
+      timer: 0
     }
   },
   methods: {
     update() {
-      const replacement = this.count%2 === 0 ? ':' : ' '
-      this.time = new Date().toLocaleTimeString('en-GB').replace(/:/g, replacement)
-      ++this.count
+      this.$store.commit('update')
     }
   },
   mounted() {

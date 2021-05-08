@@ -1,6 +1,6 @@
 <template>
-  <button id="settingsButton" @click="toggle()">
-    <span class="material-icons">{{ onClock ? 'schedule' : 'timer' }}</span>
+  <button id="settingsButton" @click="this.$store.commit('toggle')">
+    <span class="material-icons">{{ this.$store.state.onClock ? 'schedule' : 'timer' }}</span>
   </button>
 </template>
 <style>
@@ -25,16 +25,7 @@
 }
 </style>
 <script>
-import clockStatus from '../store/clockStatus'
 export default {
-  name: 'SettingsButton',
-  data() {
-    return {
-      onClock: clockStatus.state.onClock
-    }
-  },
-  methods: {
-    toggle: clockStatus.toggle
-  }
+  name: 'SettingsButton'
 }
 </script>
