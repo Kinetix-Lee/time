@@ -1,5 +1,5 @@
 <template>
-  <button id="settingsButton" @click="buttonToggle()">
+  <button id="settingsButton" @click="toggle()">
     <span class="material-icons">{{ onClock ? 'schedule' : 'timer' }}</span>
   </button>
 </template>
@@ -25,17 +25,16 @@
 }
 </style>
 <script>
+import clockStatus from '../store/clockStatus'
 export default {
   name: 'SettingsButton',
   data() {
     return {
-      onClock: true
+      onClock: clockStatus.state.onClock
     }
   },
   methods: {
-    buttonToggle() {
-      this.onClock = !this.onClock
-    }
+    toggle: clockStatus.toggle
   }
 }
 </script>
