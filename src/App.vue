@@ -1,16 +1,19 @@
 <template>
+  <SettingsButton />
   <div class="container">
     <Clock />
   </div>
 </template>
 
 <script>
-import Clock from './components/Clock.vue'
+import Clock from './components/Clock'
+import SettingsButton from './components/SettingsButton'
 
 export default {
   name: 'Time',
   components: {
-    Clock
+    Clock,
+    SettingsButton
   }
 }
 </script>
@@ -33,5 +36,6 @@ export default {
   color: #fafafa;
 
   overflow: hidden;
+  z-index: -1;
 }
 </style>
