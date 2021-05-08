@@ -38,4 +38,8 @@ export default {
   overflow: hidden;
   z-index: -1;
 }
+.display {
+  font-size: 15rem;
+  font-family: Consolas, Helvetica, sans-serif;
+}
 </style>

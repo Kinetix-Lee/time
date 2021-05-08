@@ -1,20 +1,14 @@
 <template>
-  <div id="clock" :style="{ display: $store.state.onClock ? 'block' : 'none' }">
+  <div id="clock" class="display" :style="{ display: $store.state.onClock ? 'block' : 'none' }">
     {{ $store.state.time }}
   </div>
 </template>
-<style>
-#clock {
-  font-size: 15rem;
-  font-family: Consolas, Helvetica, sans-serif;
-}
-</style>
 <script>
 export default {
   name: 'Clock',
   data() {
     return {
-      timer: 0
+      updater: 0
     }
   },
   methods: {
@@ -24,10 +18,10 @@ export default {
   },
   mounted() {
     this.update()
-    this.timer = setInterval(this.update, 1000)
+    this.updater = setInterval(this.update, 1000)
   },
   beforeUnmount() {
-    clearInterval(this.timer)
+    clearInterval(this.updater)
   }
 }
 
