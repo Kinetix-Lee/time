@@ -2,20 +2,20 @@
   <SettingsButton />
   <div class="container">
     <Clock />
-    <Timer />
+    <Countdown />
   </div>
 </template>
 
 <script>
 import Clock from './components/Clock'
-import Timer from './components/Timer'
+import Countdown from './components/Countdown'
 import SettingsButton from './components/SettingsButton'
 
 export default {
   name: 'Time',
   components: {
     Clock,
-    Timer,
+    Countdown,
     SettingsButton
   }
 }

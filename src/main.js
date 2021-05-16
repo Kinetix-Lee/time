@@ -7,7 +7,7 @@ const store = createStore({
     return {
       count: 0,
       time: '',
-      timer: '00:00:00',
+      countdown: '00:00:00',
       onClock: true
     }
   },
