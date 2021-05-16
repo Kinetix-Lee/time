@@ -1,6 +1,5 @@
 <template>
-  <div id="clock" class="display"
-    :style="{ display: $store.state.onClock ? 'block' : 'none' }">
+  <div id="clock" :style="{ display: $store.state.onClock ? 'block' : 'none' }">
     {{ $store.state.time }}
   </div>
 </template>

@@ -1,8 +1,10 @@
 <template>
   <SettingsButton />
   <div class="container">
-    <Clock />
-    <Countdown />
+    <div class="display">
+      <Clock />
+      <Countdown />
+    </div>
   </div>
 </template>
 
@@ -43,6 +45,8 @@ export default {
 }
 .display {
   font-size: 15rem;
+}
+* {
   font-family: Consolas, Helvetica, sans-serif;
 }
 </style>
