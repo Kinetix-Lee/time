@@ -46,6 +46,23 @@ export default {
 .display {
   font-size: 15rem;
 }
+button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  z-index: 10;
+  color: #fafafa;
+  background: #212121;
+  transition: .25s;
+}
+button:hover {
+  background: #fafafa;
+  color: #212121
+}
+input {
+  transition: .25s;
+}
 * {
   font-family: Consolas, Helvetica, sans-serif;
 }
