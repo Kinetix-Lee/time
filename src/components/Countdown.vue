@@ -1,5 +1,5 @@
 <template>
-<div id="countdownContainer" :style="{ display: !$store.state.onClock ? 'block' : 'none' }">
+<div id="countdownContainer" :style="{ display: !$store.state.onClock ? 'flex' : 'none' }">
   <input
     :style="{
       'background-color': backgroundColor,
@@ -15,7 +15,6 @@
 </template>
 <style>
 #countdownContainer {
-  display: flex !important;
   align-items: center;
   justify-content: center;
 }
