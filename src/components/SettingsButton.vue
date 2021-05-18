@@ -1,6 +1,6 @@
 <template>
   <button id="settingsButton" @click="this.$store.commit('toggle')">
-    <span class="material-icons">{{ this.$store.state.onClock ? 'schedule' : 'timer' }}</span>
+    <span class="material-icons">{{ this.$store.state.onClock ? 'schedule' : 'hourglass_full' }}</span>
   </button>
 </template>
 <style>
