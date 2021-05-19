@@ -8,7 +8,7 @@
     @input="countdownCheckInput"
     :disabled="countdownStarted"
     type="text" v-model="countdownInput" placeholder="00:00:00" id="countdown">
-  <button id="countdownControl" @click="countdownToggle()">
+  <button id="countdownControl" @click="countdownToggle()" :disabled="!ableToStart">
     <span class="material-icons">{{ !countdownStarted ? 'play_arrow' : 'pause' }}</span>
   </button>
 </div>
@@ -39,10 +39,11 @@ export default {
   name: 'Countdown',
   data() {
     return {
-      countdownInput: '00:00:00',
+      countdownInput: '',
       countdownValue: '00:00:00',
       countdownStarted: false,
       countdownTime: 0,
+      ableToStart: false,
       backgroundColor: '#fafafa',
       color: '#212121',
       updater: null
@@ -51,29 +52,30 @@ export default {
   methods: {
     countdownCheckInput() {
       console.log(this.countdownInput.match(/^[\d+]+:[0-5]?[0-9]:[0-5]?[0-9]$/));
-      if (this.countdownInput === '') {
+      if (this.countdownInput === '' || this.countdownInput.match(/^0+:0+:0+$/)) {
         this.backgroundColor = '#fafafa'
         this.color = '#212121'
-        return (this.countdownValue = '00:00:00')
+        this.ableToStart = false;
       } else if (this.countdownInput.match(/^[\d+]+:[0-5]?[0-9]:[0-5]?[0-9]$/)) {
         this.backgroundColor = '#fafafa'
         this.color = '#212121'
-        return (this.countdownValue = this.countdownInput)
+        this.ableToStart = true;
       } else {
         this.color = '#fafafa'
         this.backgroundColor = '#ef5350'
-        return this.countdownValue = false
+        this.ableToStart = false;
       }
     },
     countdownStart() {
+      console.log('countdown starts')
       this.countdownStarted = true
-      if (this.countdownTime === 0) {
-        const time = this.countdownValue.split(':')
-        this.countdownTime = parseInt(time[0]) * 3600 + parseInt(time[1]) * 60 + parseInt(time[2])
-      }
+      this.countdownValue = this.countdownInput
+      const time = this.countdownValue.split(':')
+      this.countdownTime = parseInt(time[0]) * 3600 + parseInt(time[1]) * 60 + parseInt(time[2])
       this.updater = setInterval(this.countdown, 1000);
     },
     countdownStop() {
+      console.log('countdown stops')
       this.countdownStarted = false
       clearInterval(this.updater)
     },
