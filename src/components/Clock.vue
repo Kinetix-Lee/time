@@ -15,9 +15,10 @@ export default {
   },
   methods: {
     update() {
-      const replacement = this.count%2 === 0 ? ':' : ' '
-      this.time = new Date().toLocaleTimeString('en-GB').replace(/:/g, replacement)
-      ++this.count
+      let time = new Date().toLocaleTimeString('en-GB')
+      // console.log(time.substr(-1));
+      if (parseInt(time.substr(-1))%2 === 0) time = time.replace(/:/g, ' ')
+      this.time = time
     },
     getOffset(timestamp) {
       const offset = Math.ceil(timestamp/1000)*1000 - timestamp
