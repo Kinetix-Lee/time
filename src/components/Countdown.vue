@@ -94,7 +94,10 @@ export default {
         time[0] = (time[0] < 10) ? '0'+time[0] : time[0]
         time[1] = (time[1] < 10) ? '0'+time[1] : time[1]
         time[2] = (time[2] < 10) ? '0'+time[2] : time[2]
-        this.countdownInput = `${time[0].toString()}:${time[1]}:${time[2]}`
+        let countdown = `${time[0].toString()}:${time[1]}:${time[2]}`
+        if (parseInt(countdown.substr(-1))%2 !== 0)
+          countdown = countdown.replace(/:/g, ' ')
+        this.countdownInput = countdown
       } else this.countdownStop()
     }
   }
