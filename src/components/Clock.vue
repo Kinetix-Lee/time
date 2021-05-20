@@ -1,6 +1,6 @@
 <template>
   <div id="clock" :style="{ display: $store.state.onClock ? 'block' : 'none' }">
-    {{ $store.state.time }}
+    {{ this.time }}
   </div>
 </template>
 <script>
@@ -8,12 +8,16 @@ export default {
   name: 'Clock',
   data() {
     return {
-      updater: 0
+      updater: 0,
+      count: 0,
+      time: ''
     }
   },
   methods: {
     update() {
-      this.$store.commit('update')
+      const replacement = this.count%2 === 0 ? ':' : ' '
+      this.time = new Date().toLocaleTimeString('en-GB').replace(/:/g, replacement)
+      ++this.count
     }
   },
   mounted() {

@@ -5,20 +5,12 @@ import App from './App.vue'
 const store = createStore({
   state() {
     return {
-      count: 0,
-      time: '',
-      countdown: '00:00:00',
       onClock: true
     }
   },
   mutations: {
     toggle(state) {
       state.onClock = !state.onClock
-    },
-    update(state) {
-      const replacement = state.count%2 === 0 ? ':' : ' '
-      state.time = new Date().toLocaleTimeString('en-GB').replace(/:/g, replacement)
-      ++state.count
     }
   }
 })
